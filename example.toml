@@ -1,0 +1,7 @@
+discord_token=""
+database_url="postgres://postgres:postgres@localhost:5432/postgres"
+check_interval=2 # Hours
+role_duration=72 # Hours
+
+guild_id=111111111111111111
+role_id=111111111111111111
