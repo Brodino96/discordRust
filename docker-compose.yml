@@ -1,0 +1,21 @@
+services:
+  db:
+    image: postgres
+    restart: unless-stopped
+    shm_size: 128mb
+    volumes:
+      - ./db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready"]
+      start_period: 10s
+      interval: 10s
+      timeout: 5s
+      retries: 10
+    environment:
+      POSTGRES_PASSWORD: postgres
+      PGUSER: postgres
+
+  whodb:
+    image: clidey/whodb
+    ports:
+      - "8080:8080"

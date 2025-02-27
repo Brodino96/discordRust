@@ -1,0 +1,6 @@
+[tasks.db]
+script = "docker compose -f docker-compose.dev.yml up"
+
+[tasks.migrate]
+script = "sqlx migrate run"
+install_crate = "sqlx-cli"

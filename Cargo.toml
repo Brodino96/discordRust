@@ -1,0 +1,14 @@
+[package]
+name = "discord_rust"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+serde = "1.0.218"
+serenity = "0.12.4"
+sqlx = { version = "0.8.3", features = [ "runtime-tokio", "postgres", "time", "derive", "macros" ] }
+time = "0.3.37"
+tokio = { version = "1.43.0", features = ["full"] }
+toml = "0.8.20"
+tracing = "0.1.41"
+tracing-subscriber = { version = "0.3.19", features = [ "env-filter" ]}
