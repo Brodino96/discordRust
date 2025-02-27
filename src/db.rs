@@ -1,4 +1,4 @@
-use serenity::all::{Member, User};
+use serenity::all::User;
 use sqlx::{postgres::PgPoolOptions, Pool, Postgres};
 use time::PrimitiveDateTime;
 use tracing::error;
@@ -19,7 +19,7 @@ impl Database {
             .await
             .expect("Migration failed");
 
-        return Database{pool: pool};
+        return Database{pool};
     }
 
     pub async fn add_user(&self, user: &User, today: PrimitiveDateTime) {

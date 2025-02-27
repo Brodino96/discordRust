@@ -5,7 +5,7 @@ use std::sync::Arc;
 
 use config::Config;
 use db::Database;
-use serenity::all::{Guild, GuildId, Member, Ready, User};
+use serenity::all::{GuildId, Member, Ready, User};
 use serenity::{all::GatewayIntents, Client};
 use serenity::{async_trait, prelude::*};
 use time::{OffsetDateTime, PrimitiveDateTime};
@@ -52,8 +52,8 @@ impl EventHandler for Handler {
         info!("Bot logged {}", ready.user.name);
         tokio::spawn({
             let db = self.db.clone();
-            let interval = self.config.getInterval();
-            let duration = self.config.getDuration();
+            let interval = self.config.get_interval();
+            let duration = self.config.get_duration();
             let context = context.clone();
             let guild_id = self.config.guild_id;
             let role_id = self.config.role_id;
@@ -97,7 +97,7 @@ async fn main() {
     let db = Arc::new(Database::init(&config.database_url).await);
 
     let mut client: Client = Client::builder(&config.discord_token, intents)
-        .event_handler(Handler{db: db.clone(), config: config})
+        .event_handler(Handler{db: db.clone(), config})
         .await
         .expect("Error creating client");
 

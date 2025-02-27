@@ -24,12 +24,11 @@ impl Config {
             .expect("Unable to parse config file");
     }
 
-    pub fn getInterval(&self) -> Duration {
+    pub fn get_interval(&self) -> Duration {
         return Duration::from_secs_f32(self.check_interval * 3600.00);
     }
 
-    pub fn getDuration(&self) -> Duration {
-        // time::Duration::seconds(seconds)
+    pub fn get_duration(&self) -> Duration {
         return Duration::from_secs_f32(self.role_duration * 3600.00);
     }
 }
