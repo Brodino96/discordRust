@@ -1,3 +1,8 @@
+name: Deploy docker image
+
+on:
+  push:
+
 services:
   db:
     image: postgres
