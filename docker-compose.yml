@@ -21,7 +21,7 @@ services:
       - "8080:8080"
 
   bot:
-    image: brodino/discord_temp:latest
+    image: ghcr.io/brodino96/discord_temp:latest
     restart: unless-stopped
     depends_on:
       db:

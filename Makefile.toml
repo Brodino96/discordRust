@@ -8,7 +8,7 @@ install_crate = "sqlx-cli"
 
 [tasks.build_image]
 dependencies = [ "prepare" ]
-script = "docker build brodino/discord_temp:latest"
+script = "docker build -t ghcr.io/brodino96/discord_temp:latest ."
 
 [tasks.prepare]
 env_files = [ ".env" ]
