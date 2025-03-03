@@ -1,6 +1,17 @@
 [tasks.db]
-script = "docker compose -f docker-compose.dev.yml up"
+script = "docker compose -f docker-compose.dev.yml up -d --wait"
 
 [tasks.migrate]
+dependencies = [ "db" ]
 script = "sqlx migrate run"
+install_crate = "sqlx-cli"
+
+[tasks.build_image]
+dependencies = [ "prepare" ]
+script = "docker build brodino/discord_temp:latest"
+
+[tasks.prepare]
+env_files = [ ".env" ]
+dependencies = [ "migrate" ]
+script = "cargo sqlx prepare"
 install_crate = "sqlx-cli"

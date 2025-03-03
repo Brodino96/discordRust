@@ -19,3 +19,11 @@ services:
     image: clidey/whodb
     ports:
       - "8080:8080"
+
+  bot:
+    image: brodino/discord_temp:latest
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    env_file: ".env"
