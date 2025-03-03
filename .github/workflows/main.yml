@@ -1,9 +1,9 @@
-name: Build and Upload Artifacts
+name: Deploy docker image
 
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
 
 jobs:
@@ -39,9 +39,3 @@ jobs:
 
       - name: Upload image
         run: docker push ghcr.io/Brodino96/discord_temp:latest
-
-      - name: Upload Artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: build-artifacts
-          path: ./build/libs/*
