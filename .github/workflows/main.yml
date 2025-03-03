@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: blacksmith-4vcpu-ubuntu-2204
 
     steps:
       - name: Checkout repository
@@ -22,7 +22,7 @@ jobs:
           cargo binstall sqlx-cli cargo-make --no-confirm
 
       - name: Cache Rust dependencies
-        uses: Swatinem/rust-cache@v2
+        uses: useblacksmith/rust-cache@v3
         
       - name: Set up Docker
         uses: docker/setup-buildx-action@v3
